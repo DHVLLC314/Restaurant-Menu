@@ -6,6 +6,7 @@ public class MenuItem {
     private String description;
     private double price;
     private String category;
+//    private String[] category;
     private boolean isNew;
 
     public MenuItem(String description, double price, String category, boolean isNew) {
