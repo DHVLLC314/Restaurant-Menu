@@ -1,46 +1,41 @@
 package restaurant;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+
 
 public class Menu {
-    private ArrayList<MenuItem> menuItems;
+    private String menuName;
+    private ArrayList<MenuItem> menuItems = new ArrayList<>();
+    private Date lastUpdated;
 
-    private static Date updatedLast;
-
-
-    public ArrayList<MenuItem> getMenuItems() {
-        return menuItems;
+    public Menu(String menuName) {
+        this.menuName = menuName;
+        this.lastUpdated = new Date();
     }
 
-    public void setMenuItems(ArrayList<MenuItem> menuItems) {
-        this.menuItems = menuItems;
+    public String getMenuName() { return menuName; }
+
+    public void setMenuName(String aName) { this.menuName = aName; }
+
+    public void addItem(MenuItem aItem) {
+        if (!menuItems.contains(aItem)) { ;
+            menuItems.add(aItem);
+        }
     }
 
-    public static Date getUpdatedLast() {
-        return updatedLast;
-    }
-
-    public static void setUpdatedLast(Date updatedLast) {
-        Menu.updatedLast = updatedLast;
+    public void removeItem(MenuItem aItem) {
+        if (menuItems.contains(aItem)) {
+            menuItems.remove(aItem);
+        }
     }
 
     @Override
     public String toString() {
-        return "Menu{" +
-                "menuItems=" + menuItems +
-                '}';
+        return  "Menu Name: " + menuName +
+                "\nMenu Last Updated: " + lastUpdated + '\n' +
+                menuItems;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Menu menu = (Menu) o;
-        return menuItems.equals(menu.menuItems);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(menuItems);
-    }
 }

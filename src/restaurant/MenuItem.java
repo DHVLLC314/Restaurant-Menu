@@ -1,75 +1,46 @@
 package restaurant;
 
-import java.util.*;
-
 public class MenuItem {
-    private String description;
-    private double price;
+    private String itemName;
     private String category;
-    private boolean isNew;
+    private String description;
+    private Double price;
+    private boolean itemStatus;
 
-    public MenuItem(String description, double price, String category, boolean isNew) {
+    public MenuItem(String itemName, String category,  String description, Double price) {
+        this.itemName = itemName;
+        this.category = category;
         this.description = description;
         this.price = price;
-        this.category = category;
-        this.isNew = isNew;
+        this.itemStatus = true;
     }
 
-    public String getDescription() {
-        return description;
-    }
+    public String getItemName() { return itemName; }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public String getCategory() { return category; }
 
-    public double getPrice() {
-        return price;
-    }
+    public String getDescription() { return description; }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+    public Double getPrice() { return price; }
 
-    public String getCategory() {
-        return category;
-    }
+    public void setItemName(String aName) { this.itemName = aName; }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+    public void setCategory(String aCategory) { this.category = aCategory; }
 
-    public boolean isNew() {
-        return isNew;
-    }
+    public void setDescription(String aDescription) { this.description = aDescription; }
 
-    public void setNew(boolean aNew) {
-        isNew = aNew;
+    public void setPrice(Double aPrice) { this.price = aPrice; }
+
+    public void setNewItemStatus() {
+        this.itemStatus = false;
     }
 
     @Override
     public String toString() {
-        return "MenuItem{" +
-                "description='" + description + '\'' +
-                ", price=" + price +
-                ", category='" + category + '\'' +
-                ", isNew=" + isNew +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        MenuItem menuItem = (MenuItem) o;
-        return Double.compare(menuItem.price, price) == 0 &&
-                isNew == menuItem.isNew &&
-                description.equals(menuItem.description) &&
-                category.equals(menuItem.category);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(description, price, category, isNew);
+        return "\nMenu Item: " + itemName +
+                "\nItem Category: " + category +
+                "\nItem Description: " + description +
+                "\nitem Price: " + price +
+                "\nThia ia a New Item: " + itemStatus +'\n';
     }
 }
